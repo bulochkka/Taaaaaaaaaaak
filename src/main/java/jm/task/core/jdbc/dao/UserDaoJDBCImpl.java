@@ -45,14 +45,17 @@ public class UserDaoJDBCImpl implements UserDao {
         }
     }
 
-    public void removeUserById(long id) {/////PreparedStatement
+    public void removeUserById(long id)  {/////PreparedStatement
         try (PreparedStatement statement=connection.prepareStatement("INSERT INTO user(id) VALUES (?)")){
-            statement.executeUpdate("DELETE FROM user WHERE id = id");
+            statement.setLong(1, id);
+            statement.executeUpdate();
             connection.commit();
         } catch (SQLException e) {
-            System.out.println("Issues while removing user from table");
+            System.out.println(id+"Удален!");
         }
     }
+
+
 
     public List<User> getAllUsers() {/////Statement
         List<User> list = new ArrayList<>();
