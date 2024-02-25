@@ -52,7 +52,7 @@ public class UserDaoJDBCImpl implements UserDao {
             statement.executeUpdate();
             System.out.println(id + " удален!");
         } catch (SQLException e) {
-            System.out.println("Ошибка при удалении пользователя с ID " + id + ": " + e.getMessage());
+            System.out.println("Ошибка при удалении пользователя с таким ID " + id + ": " + e.getMessage());
         }
     }
 
