@@ -44,8 +44,17 @@ public class UserDaoJDBCImpl implements UserDao {
             System.out.println("Issues while add saveUser");
         }
     }
-
-    public void removeUserById(long id)  {/////PreparedStatement
+    @Override
+    public void removeUserById(long id) {
+        try (PreparedStatement statement = connection.prepareStatement("DELETE FROM user WHERE id = ?")) {
+            statement.setLong(1, id);
+            statement.executeUpdate();
+            System.out.println(id + " удален!");
+        } catch (SQLException e) {
+            System.out.println("Ошибка при удалении пользователя с ID " + id + ": " + e.getMessage());
+        }
+    }
+/*    public void removeUserById(long id)  {/////PreparedStatement
         try (PreparedStatement statement=connection.prepareStatement("INSERT INTO user(id) VALUES (?)")){
             statement.setLong(1, id);
             statement.executeUpdate();
@@ -53,9 +62,7 @@ public class UserDaoJDBCImpl implements UserDao {
         } catch (SQLException e) {
             System.out.println(id+"Удален!");
         }
-    }
-
-
+    }*/
 
     public List<User> getAllUsers() {/////Statement
         List<User> list = new ArrayList<>();
