@@ -10,12 +10,12 @@ public class Util {
 
     public static Connection getConnection() {
         Connection connection = null;
-        try{
+        try {
             connection = DriverManager.getConnection(URL, NAME, PASSWORD);
             if (!connection.isClosed()) {
                 System.out.println("This project has been connected to database" + URL);
             }
-        } catch(java.sql.SQLException e) {
+        } catch (java.sql.SQLException e) {
             System.out.println("There is no connection(\n");
             e.printStackTrace();
         }

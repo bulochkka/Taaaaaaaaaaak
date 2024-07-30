@@ -1,17 +1,16 @@
 package jm.task.core.jdbc.dao;
+
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import jm.task.core.jdbc.model.User;
-
-import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
-    private PreparedStatement statement=null;
+    private PreparedStatement statement = null;
     private Connection connection = Util.getConnection();
+
     public UserDaoJDBCImpl() {
 
     }
@@ -59,19 +58,19 @@ public class UserDaoJDBCImpl implements UserDao {
     public List<User> getAllUsers() {/////Statement
         List<User> list = new ArrayList<>();
         try (ResultSet resultSet = connection.prepareStatement("SELECT*from user").executeQuery("SELECT*from" +
-                " user")){
-            while (resultSet.next()){
+                " user")) {
+            while (resultSet.next()) {
                 list.add(new User(resultSet.getLong(1), resultSet.getString(2),
                         resultSet.getString(3), resultSet.getByte(4)));
             }
-        } catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("Issues while getAllUsers method");
         }
         return list;
     }
 
     public void cleanUsersTable() { ////statement
-        try (Statement statement = connection.createStatement()){
+        try (Statement statement = connection.createStatement()) {
             statement.executeUpdate("TRUNCATE user");
         } catch (SQLException e) {
             System.out.println("Issues while cleaning table");

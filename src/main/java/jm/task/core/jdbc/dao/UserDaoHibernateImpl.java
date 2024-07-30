@@ -1,17 +1,18 @@
 package jm.task.core.jdbc.dao;
 
-import java.util.ArrayList;
-import java.util.List;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.CopyUtil;
-import jm.task.core.jdbc.util.Util;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class  UserDaoHibernateImpl implements UserDao {
+import java.util.ArrayList;
+import java.util.List;
+
+public class UserDaoHibernateImpl implements UserDao {
     public UserDaoHibernateImpl() {
 
     }
+
     @Override
     public void createUsersTable() {
         Transaction transaction;
@@ -104,5 +105,5 @@ public class  UserDaoHibernateImpl implements UserDao {
         }
     }
 
-    }
+}
 

@@ -1,28 +1,23 @@
 package jm.task.core.jdbc.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name="User")
+@Table(name = "User")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name = "id")
     private Long id;
 
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
 
-    @Column(name="lastname")
+    @Column(name = "lastname")
     private String lastName;
 
-    @Column(name="age")
+    @Column(name = "age")
     private Byte age;
 
     public User() {
@@ -34,8 +29,9 @@ public class User {
         this.lastName = lastName;
         this.age = age;
     }
+
     public User(Long id, String name, String lastName, Byte age) {
-        this(name,lastName,age);
+        this(name, lastName, age);
         this.id = id;
     }
 
@@ -70,6 +66,7 @@ public class User {
     public void setAge(Byte age) {
         this.age = age;
     }
+
     @Override
     public String toString() {
         return "User{" +
@@ -86,7 +83,6 @@ public class User {
         if (!(o instanceof User user)) return false;
         return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(lastName, user.lastName) && Objects.equals(age, user.age);
     }*/
-
 
 
     @Override
