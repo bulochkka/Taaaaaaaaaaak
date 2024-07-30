@@ -23,7 +23,6 @@ public class UserDaoJDBCImpl implements UserDao {
             System.out.println("Issues while creating DB");
         }
     }
-
     public void dropUsersTable() {    ///////statement
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate("DROP TABLE IF EXISTS user");
